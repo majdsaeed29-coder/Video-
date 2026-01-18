@@ -2,24 +2,18 @@
 <html lang="ar">
 <head>
   <meta charset="UTF-8">
-  <title>مولّد فيديو AI</title>
-  <style>
-    body { font-family: sans-serif; background: #f0f0f0; padding: 20px; text-align: center; }
-    textarea { width: 80%; height: 100px; margin-bottom: 10px; }
-    button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
-    video { margin-top: 20px; width: 80%; max-width: 500px; }
-  </style>
+  <title>AI Video Generator</title>
 </head>
 <body>
-  <h2>اكتب نصك وحوّله لفيديو 🎬</h2>
+  <h2>اكتب نصك وحوّله لفيديو</h2>
 
-  <textarea id="prompt" placeholder="اكتب وصف الفيديو هنا..."></textarea><br>
-  <button onclick="generateVideo()">إنشاء الفيديو</button>
+  <textarea id="prompt" placeholder="اكتب وصف الفيديو..."></textarea>
+  <button onclick="generate()">إنشاء الفيديو</button>
 
-  <video id="video" controls></video>
+  <video id="video" controls style="width:300px; margin-top:20px;"></video>
 
   <script>
-    async function generateVideo() {
+    async function generate() {
       const prompt = document.getElementById("prompt").value;
 
       const response = await fetch("http://localhost:3000/generate", {
@@ -28,9 +22,8 @@
         body: JSON.stringify({ prompt })
       });
 
-      const blob = await response.blob();
-      const url = URL.createObjectURL(blob);
-      document.getElementById("video").src = url;
+      const data = await response.json();
+      document.getElementById("video").src = data.video;
     }
   </script>
 </body>
