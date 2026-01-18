@@ -7,7 +7,7 @@ app.use(cors());
 app.use(express.json());
 
 // ⚠️ حط مفتاح الـ API تبعك هون بين علامتي التنصيص
-const API_KEY = "ltxvuM8ZNw7siIL1XZ8wQqXEVAWLTiFKh4CGIzId4O78wjsFB_iEH1py-xRad68O7n64lWueHvKp8LEjP3OrFp4a6byhoB6zCeT-wSSOqBc4ljC72GJJ9anO0FTOnxasvVqJRcNiaWifpeoDwh9OG6MAEgccXOlE4u2OediPt9CR3ub";
+const API_KEY = "";
 
 app.post("/generate", async (req, res) => {
   try {
